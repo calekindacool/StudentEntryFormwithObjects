@@ -2,76 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title> sasalele </title>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 20px;
-    }
-
-    h1 {
-        text-align: center;
-    }
-
-    .container {
-        background: white;
-        padding: 20px;
-        max-width: 400px;
-        margin: auto;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    input, button {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        font-size: 16px;
-    }
-
-    button {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #45a049;
-    }
-
-    .student-list {
-        margin-top: 20px;
-        background: #ffffff;
-        padding: 15px;
-        border-radius: 8px;
-        max-width: 400px;
-        margin: 20px auto;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    .student-item {
-        padding: 8px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .student-item:last-child {
-        border-bottom: none;
-    }
-</style>
-
+<title>Student Entry Form</title>
 </head>
 <body>
 
 <h1>Student Entry Form</h1>
 
 <div class="container">
-    <input type="text" id="name" placeholder="Enter name">
-    <input type="number" id="age" placeholder="Enter age">
-    <input type="text" id="id" placeholder="Enter student ID">
+    <input type="text" id="name" placeholder="Enter name" value="cale">
+    <input type="number" id="age" placeholder="Enter age" value="16">
+    <input type="text" id="email" placeholder="Enter student email" value="calemoher@gmail.com">
     <button onclick="addStudent()">Add Student</button>
 </div>
 
@@ -81,10 +21,10 @@
 
 <script>
     class Student {
-        constructor(name, age, id) {
+        constructor(name, age, email) {
             this.name = name;
             this.age = age;
-            this.id = id;
+            this.email = email;
         }
     }
 
@@ -93,21 +33,21 @@
     function addStudent() {
         const name = document.getElementById("name").value;
         const age = document.getElementById("age").value;
-        const id = document.getElementById("id").value;
+        const email = document.getElementById("email").value;
 
-        if (!name || !age || !id) {
+        if (!name || !age || !email) {
             alert("Please fill out all fields.");
             return;
         }
 
-        const student = new Student(name, age, id);
+        const student = new Student(name, age, email);
         students.push(student);
 
         displayStudents();
 
         document.getElementById("name").value = "";
         document.getElementById("age").value = "";
-        document.getElementById("id").value = "";
+        document.getElementById("email").value = "";
     }
 
     function displayStudents() {
@@ -118,7 +58,7 @@
             list.innerHTML += `
                 <div class="student-item">
                     <strong>${index + 1}.</strong> 
-                    ${s.name}, Age: ${s.age}, ID: ${s.id}
+                    ${s.name}, Age: ${s.age}, Email: ${s.email}
                 </div>
             `;
         });
@@ -127,3 +67,4 @@
 
 </body>
 </html>
+
